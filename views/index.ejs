@@ -1,0 +1,35 @@
+<% include partials/header.ejs %>
+    <div class="table-wrapper">
+        <% if (teams.length > 0) {%>
+            <table class="table table-hovered" style="text-align: center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Team Name</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% teams.forEach((team, index) => { %>
+                        <tr>
+                            <th scope="row"><%= team.id %></th>
+                            <td><img src="/assets/img/<%= team.image %>" class="player-img" alt=""></td>
+                            <td><%= team.team_name %></td>
+                            <td>
+                                <a href="/add/<%= team.id %>"  rel="noopener" class="btn btn-sm btn-warning">Add Players</a>
+                                <a href="/view/<%= team.id %>"  rel="noopener" class="btn btn-sm btn-primary">View Players</a>
+                                <!-- <a href="/edit-team/<%= team.id %>"  rel="noopener" class="btn btn-sm btn-success">Edit</a> -->
+                                <a href="/delete-team/<%= team.id %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No teams found. Go <a href="/add-team" >here</a> to add teams.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>
